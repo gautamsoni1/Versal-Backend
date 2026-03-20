@@ -4,7 +4,6 @@ const router = express.Router();
 const Chat = require('../model/chatSchema');
 const bcrypt = require('bcrypt');
 
-
 // Signup
 router.post('/signup', async (req, res) => {
   const { email, password } = req.body;

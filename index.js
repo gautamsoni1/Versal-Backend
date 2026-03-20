@@ -17,10 +17,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 connectDB();
 
+app.get("/", (req, res) => {
+  res.send("Backend working");
+});
+
 app.use('/api', userRoutes);
 app.use('/api', authRoutes);
 
 app.use('/uploads', express.static('uploads'));
+
 
 
 const PORT = process.env.PORT || 8080;
