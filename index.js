@@ -11,11 +11,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
-// app.use(cors());
 app.use(cors({
   origin: "https://api-authentication-y2my.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// ✅ handle preflight (CRITICAL)
+app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
