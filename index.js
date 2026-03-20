@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
+// ✅ CORS FIX (IMPORTANT)
 app.use(cors({
   origin: "https://api-authentication-y2my.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -18,7 +19,7 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ handle preflight (CRITICAL)
+// ✅ Handle preflight requests
 app.options("*", cors());
 
 app.use(express.json());

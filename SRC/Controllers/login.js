@@ -33,10 +33,15 @@ const loginUser = async (req, res) => {
       });
     }
 
-    
+    // ✅ Check JWT_SECRET (IMPORTANT FIX)
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is missing in environment variables");
+    }
+
+
     const token = jwt.sign(
       { id: user._id, role: user.role, email:user.email },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       { expiresIn: '1d' }
     );
 
