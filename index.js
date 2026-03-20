@@ -11,7 +11,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "https://api-authentication-y2my.vercel.app",
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
